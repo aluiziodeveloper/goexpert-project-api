@@ -12,6 +12,10 @@
 *.so
 *.dylib
 
+# Env files
+.env
+*.env
+
 # binary databases
 *.db
 *.sqlite
