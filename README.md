@@ -8,7 +8,7 @@ Abrir uma janela de terminal e clonar o projeto deste repositório.
 Executar o comando abaixo no diretório do projeto clonado:
 
 ```shell
-go run server.go
+cd cmd/server && go run main.go
 ```
 
 A API ficará disponível no endereço http://localhost:8000.
