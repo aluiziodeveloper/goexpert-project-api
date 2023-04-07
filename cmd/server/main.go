@@ -5,6 +5,8 @@ import (
 	"github.com/aluiziodeveloper/goexpert-project-api/internal/entity"
 	"github.com/aluiziodeveloper/goexpert-project-api/internal/infra/database"
 	"github.com/aluiziodeveloper/goexpert-project-api/internal/infra/webserver/handlers"
+	"github.com/go-chi/chi"
+	"github.com/go-chi/chi/middleware"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"net/http"
@@ -27,9 +29,11 @@ func main() {
 	productDB := database.NewProduct(db)
 	productHandler := handlers.NewProductHandler(productDB)
 
-	http.HandleFunc("/products", productHandler.CreateProduct)
+	r := chi.NewRouter()
+	r.Use(middleware.Logger)
+	r.Post("/products", productHandler.CreateProduct)
 
-	err = http.ListenAndServe(":8000", nil)
+	err = http.ListenAndServe(":8000", r)
 	if err != nil {
 		panic(err)
 	}
