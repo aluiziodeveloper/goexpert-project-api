@@ -1,4 +1,21 @@
+basePath: /
+host: localhost:8000
 info:
-  contact: {}
+  contact:
+    email: aluiziodeveloper@gmail.com
+    name: Jorge Aluizio
+    url: http://www.aluiziodeveloper.com.br
+  description: Product API with authentication
+  license:
+    name: Free License
+    url: http://www.aluiziodeveloper.com.br
+  termsOfService: http://swagger.io/terms/
+  title: Go Expert API Project
+  version: "1.0"
 paths: {}
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"

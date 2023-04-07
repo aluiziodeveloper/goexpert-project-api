@@ -10,22 +10,38 @@ const docTemplate = `{
     "info": {
         "description": "{{escape .Description}}",
         "title": "{{.Title}}",
-        "contact": {},
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "Jorge Aluizio",
+            "url": "http://www.aluiziodeveloper.com.br",
+            "email": "aluiziodeveloper@gmail.com"
+        },
+        "license": {
+            "name": "Free License",
+            "url": "http://www.aluiziodeveloper.com.br"
+        },
         "version": "{{.Version}}"
     },
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
-    "paths": {}
+    "paths": {},
+    "securityDefinitions": {
+        "ApiKeyAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
 }`
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
-	Version:          "",
-	Host:             "",
-	BasePath:         "",
+	Version:          "1.0",
+	Host:             "localhost:8000",
+	BasePath:         "/",
 	Schemes:          []string{},
-	Title:            "",
-	Description:      "",
+	Title:            "Go Expert API Project",
+	Description:      "Product API with authentication",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 }
