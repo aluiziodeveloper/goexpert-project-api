@@ -37,6 +37,11 @@ func main() {
 	r.Put("/products/{id}", productHandler.UpdateProduct)
 	r.Delete("/products/{id}", productHandler.DeleteProduct)
 
+	userDB := database.NewUser(db)
+	userHandler := handlers.NewUserHandler(userDB)
+
+	r.Post("/users", userHandler.Create)
+
 	err = http.ListenAndServe(":8000", r)
 	if err != nil {
 		panic(err)
